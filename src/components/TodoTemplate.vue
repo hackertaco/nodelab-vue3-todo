@@ -2,19 +2,16 @@
 <div class="todo-background">
     <todo-header></todo-header>
     <todo-input></todo-input>
-    <todo-lists></todo-lists>
 </div>
 </template>
 
 <script>
 import TodoHeader from "./TodoHeader.vue";
-import TodoLists from "./TodoLists.vue";
 import TodoInput from "./TodoInput.vue";
 export default {
     name: "TodoTemplate",
     components: {
         TodoHeader,
-        TodoLists,
         TodoInput,
     },
 };
