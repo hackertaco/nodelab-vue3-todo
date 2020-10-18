@@ -9,6 +9,9 @@
 import TodoTemplate from "./components/TodoTemplate.vue";
 import TodoInput from "./components/TodoInput.vue";
 import TodoLists from "./components/TodoLists.vue";
+import {
+    mapMutations
+} from "vuex";
 export default {
     name: "App",
     components: {
@@ -17,9 +20,9 @@ export default {
         TodoInput,
     },
     methods: {
-        clearTodo() {
-            localStorage.clear();
-        },
+        ...mapMutations({
+            clearTodo: "clearAllItems"
+        }),
     },
 };
 </script>
