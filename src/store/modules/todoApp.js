@@ -3,7 +3,11 @@ const storage = {
     const arr = [];
     if (localStorage.length !== 0) {
       for (let i = 0; i < localStorage.length; i++) {
-        if (localStorage.key(i) !== "loglevel:webpack-dev-server") {
+        if (
+          localStorage.key(i) !== "loglevel:webpack-dev-server" &&
+          localStorage.key(i) !== "csCursors" &&
+          localStorage.key(i) !== "csPointers"
+        ) {
           arr.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
         }
       }
@@ -23,7 +27,6 @@ const getters = {
 const mutations = {
   addOneItem(state, todoItem) {
     const obj = { completed: false, item: todoItem };
-    // console.log(obj);
     localStorage.setItem(todoItem, JSON.stringify(obj));
     state.todoItems.push(obj);
   },
