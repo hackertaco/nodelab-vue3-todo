@@ -1,12 +1,12 @@
 <template>
 <div class="lists-block">
-    <ul>
-        <li v-for="(todoItem, index) in this.todoItems" :key="todoItem.item">
+    <draggable :list="todoItems" draggable=".drag-item">
+        <div v-for="(todoItem, index) in this.todoItems" :key="index" class="drag-item">
             <i class="fas fa-check checkBtn" @click="toggleComplete({ todoItem, index })" :class="{ checkBtnCompleted: todoItem.completed }"></i>
             <span @click="toggleComplete({ todoItem, index })" :class="{ textCompleted: todoItem.completed }">{{ todoItem.item }}</span>
             <span @click="removeTodo({ todoItem, index })" class="removeBtn"><i class="fas fa-trash"></i></span>
-        </li>
-    </ul>
+        </div>
+    </draggable>
 </div>
 </template>
 
@@ -18,7 +18,16 @@ import {
     mapMutations,
     useStore
 } from "vuex";
+import {
+    VueDraggableNext
+} from "vue-draggable-next";
+
 export default {
+    name: "list",
+
+    components: {
+        draggable: VueDraggableNext,
+    },
     methods: {
         ...mapMutations({
             removeTodo: "removeOneItem",
